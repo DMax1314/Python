@@ -22,6 +22,7 @@ Credits:
     This code was written by editing the code from
     https://www.riannetrujillo.com/blog/python-fractal/
 """
+
 import sys
 import turtle
 
@@ -82,3 +83,4 @@ if __name__ == "__main__":
 
     vertices = [(-175, -125), (0, 175), (175, -125)]  # vertices of triangle
     triangle(vertices[0], vertices[1], vertices[2], int(sys.argv[1]))
+    turtle.Screen().exitonclick()

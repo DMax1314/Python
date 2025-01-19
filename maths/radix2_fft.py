@@ -84,7 +84,6 @@ class FFT:
         # Corner case
         if len(dft) <= 1:
             return dft[0]
-        #
         next_ncol = self.c_max_length // 2
         while next_ncol > 0:
             new_dft = [[] for i in range(next_ncol)]
@@ -167,7 +166,7 @@ class FFT:
             f"{coef}*x^{i}" for coef, i in enumerate(self.product)
         )
 
-        return "\n".join((a, b, c))
+        return f"{a}\n{b}\n{c}"
 
 
 # Unit tests

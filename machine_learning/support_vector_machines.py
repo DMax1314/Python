@@ -14,11 +14,11 @@ def norm_squared(vector: ndarray) -> float:
     Returns:
         float: squared second norm of vector
 
-    >>> norm_squared([1, 2])
+    >>> int(norm_squared([1, 2]))
     5
-    >>> norm_squared(np.asarray([1, 2]))
+    >>> int(norm_squared(np.asarray([1, 2])))
     5
-    >>> norm_squared([0, 0])
+    >>> int(norm_squared([0, 0]))
     0
     """
     return np.dot(vector, vector)
@@ -74,7 +74,8 @@ class SVC:
             # sklear: def_gamma = 1/(n_features * X.var()) (wiki)
             # previously it was 1/(n_features)
         else:
-            raise ValueError(f"Unknown kernel: {kernel}")
+            msg = f"Unknown kernel: {kernel}"
+            raise ValueError(msg)
 
     # kernels
     def __linear(self, vector1: ndarray, vector2: ndarray) -> float:

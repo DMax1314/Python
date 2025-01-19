@@ -10,7 +10,6 @@ Reference: shorturl.at/exHM7
 
 # Author: Swayam Singh (https://github.com/practice404)
 
-
 from queue import PriorityQueue
 from typing import Any
 
@@ -26,8 +25,8 @@ def pass_and_relaxation(
     cst_bwd: dict,
     queue: PriorityQueue,
     parent: dict,
-    shortest_distance: float | int,
-) -> float | int:
+    shortest_distance: float,
+) -> float:
     for nxt, d in graph[v]:
         if nxt in visited_forward:
             continue
@@ -37,9 +36,11 @@ def pass_and_relaxation(
             queue.put((new_cost_f, nxt))
             cst_fwd[nxt] = new_cost_f
             parent[nxt] = v
-        if nxt in visited_backward:
-            if cst_fwd[v] + d + cst_bwd[nxt] < shortest_distance:
-                shortest_distance = cst_fwd[v] + d + cst_bwd[nxt]
+        if (
+            nxt in visited_backward
+            and cst_fwd[v] + d + cst_bwd[nxt] < shortest_distance
+        ):
+            shortest_distance = cst_fwd[v] + d + cst_bwd[nxt]
     return shortest_distance
 
 

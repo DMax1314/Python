@@ -1,5 +1,6 @@
 beautifulsoup4
-fake_useragent
+fake-useragent
+imageio
 keras
 lxml
 matplotlib
@@ -7,16 +8,12 @@ numpy
 opencv-python
 pandas
 pillow
-projectq
-qiskit
 requests
 rich
-scikit-fuzzy
 scikit-learn
+sphinx-pyproject
 statsmodels
 sympy
-tensorflow; python_version < "3.11"
-texttable
 tweepy
+typing_extensions
 xgboost
-yulewalker

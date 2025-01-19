@@ -1,6 +1,7 @@
 """Breath First Search (BFS) can be used when finding the shortest path
 from a given source node to a target node in an unweighted graph.
 """
+
 from __future__ import annotations
 
 graph = {
@@ -73,9 +74,10 @@ class Graph:
 
         target_vertex_parent = self.parent.get(target_vertex)
         if target_vertex_parent is None:
-            raise ValueError(
+            msg = (
                 f"No path from vertex: {self.source_vertex} to vertex: {target_vertex}"
             )
+            raise ValueError(msg)
 
         return self.shortest_path(target_vertex_parent) + f"->{target_vertex}"
 
