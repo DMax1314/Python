@@ -26,13 +26,15 @@ def get_subreddit_data(
     """
     wanted_data = wanted_data or []
     if invalid_search_terms := ", ".join(sorted(set(wanted_data) - valid_terms)):
-        raise ValueError(f"Invalid search term: {invalid_search_terms}")
+        msg = f"Invalid search term: {invalid_search_terms}"
+        raise ValueError(msg)
     response = requests.get(
         f"https://reddit.com/r/{subreddit}/{age}.json?limit={limit}",
         headers={"User-agent": "A random string"},
+        timeout=10,
     )
     if response.status_code == 429:
-        raise requests.HTTPError
+        raise requests.HTTPError(response=response)
 
     data = response.json()
     if not wanted_data:

@@ -1,6 +1,7 @@
 """
 This is pure Python implementation of tree traversal algorithms
 """
+
 from __future__ import annotations
 
 import queue
@@ -13,11 +14,9 @@ class TreeNode:
         self.left = None
 
 
-def build_tree():
+def build_tree() -> TreeNode:
     print("\n********Press N to stop entering at any point of time********\n")
-    check = input("Enter the value of the root node: ").strip().lower() or "n"
-    if check == "n":
-        return None
+    check = input("Enter the value of the root node: ").strip().lower()
     q: queue.Queue = queue.Queue()
     tree_node = TreeNode(int(check))
     q.put(tree_node)
@@ -37,7 +36,7 @@ def build_tree():
         right_node = TreeNode(int(check))
         node_found.right = right_node
         q.put(right_node)
-    return None
+    raise ValueError("Something went wrong")
 
 
 def pre_order(node: TreeNode) -> None:
@@ -165,8 +164,8 @@ def level_order_actual(node: TreeNode) -> None:
             if node_dequeued.right:
                 list_.append(node_dequeued.right)
         print()
-        for node in list_:
-            q.put(node)
+        for inner_node in list_:
+            q.put(inner_node)
 
 
 # iteration version
@@ -272,7 +271,7 @@ if __name__ == "__main__":
     doctest.testmod()
     print(prompt("Binary Tree Traversals"))
 
-    node = build_tree()
+    node: TreeNode = build_tree()
     print(prompt("Pre Order Traversal"))
     pre_order(node)
     print(prompt() + "\n")
